@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+
+  mobilum-db:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "6433:1433"
+    volumes:
+      - mobilumdb_data:/var/opt/mssql
+  
+  mobilum.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:DefaultConnection=Server=sql-data;Port=6433;Database=mobilumDB;User Id=admin;Password=Pass@word;"
+    ports:
+      - "8000:80"

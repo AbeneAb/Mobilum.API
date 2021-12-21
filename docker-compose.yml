@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  mobilum-db:
+    container_name: mobilum-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+
+  mobilum.api:
+    image: ${DOCKER_REGISTRY-}mobilumapi
+    build:
+      context: .
+      dockerfile: Mobilum.API/Dockerfile
+
+    depends_on:
+      - mobilum-db 
+
+volumes:
+  mobilumdb_data:
+    
