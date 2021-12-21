@@ -19,10 +19,10 @@ namespace Mobilum.Benchmark
     {
         static void Main()
         {
-            BenchmarkRunner.Run<BenchmarkBriantrust>();
+            BenchmarkRunner.Run<BenchmarkMobilum>();
         }
     }
-    public class BenchmarkBriantrust
+    public class BenchmarkMobilum
     {
         [Benchmark]
         public async Task RunSearch()
